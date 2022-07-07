@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -t deploy@138.197.202.154 "cd /home/deploy/readwithscott/current ; bash --login"
