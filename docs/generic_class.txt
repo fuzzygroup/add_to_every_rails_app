@@ -88,6 +88,47 @@ class Site < ActiveRecord::Base
     end
     
   end
+  
+  #
+  # The .to_h experimental version
+  #
+  
+  def self.exists?(struct)
+    where_clauses = []
+    IDENTITY_COLUMNS.each do |identity_column|
+      where_clauses << {identity_column => struct.send(identity_column)}
+    end
+    #raise where_clauses.inspect
+    obj = self.where(where_clauses.first).first
+    if obj
+      return true, obj
+    end
+    return false, nil
+  end
+  
+  # NOTE would require attr_accessible to allow for things in the struct that are 
+  # flags on the play
+  def self.find_or_create(struct)
+    exists, bib = self.exists?(struct)
+    return 200, bib if bib
+    #debugger
+    # params = Bibliography.struct_to_params(struct)
+    # puts params.inspect
+    bib = Bibliography.new(struct.to_h)
+    #bib.date_created_at = Date.today
+    # bib.title = struct.title
+    # bib.user_id = struct.user.id
+    # bib.url = struct.url
+    # bib.active = struct.active
+
+    bib.save
+    if bib.persisted?
+      return 200, bib
+    else
+      raise 500, bib#.errors.full_messages.inspect
+    end
+    
+  end
 
 
   #########################################################################

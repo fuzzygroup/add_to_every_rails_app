@@ -1,0 +1,8 @@
+    add_column :table_name, :column_name, :string
+    create_table :table_name, :force => true do |t|
+      t.
+      t.timestamps
+    end
+    add_index :table_name, :column_name
+    add_index :table_name, [:column_name, :column_name], :name => "index_name", :unique => true
+    add_index :table_name, [:column_name, :column_name], :unique => true
