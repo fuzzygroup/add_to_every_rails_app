@@ -22,7 +22,7 @@ stop_on_errors = true
 
 # setting compiler to ruby-1.9.3 since `which ruby` was setting it to 1.8.7
 compiler_ruby = "$HOME/.rvm/rubies/ruby-1.9.3-p484/bin/ruby"
-compiler_ruby = which ruby
+compiler_ruby = `which ruby`
 
 changed_ruby_files = `git diff-index --name-only --cached HEAD`.split("\n").inject([]) do |files, line|
   files << line.chomp if line =~ /(.+\.(e?rb|task|rake|thor)|[Rr]akefile|[Tt]horfile)/

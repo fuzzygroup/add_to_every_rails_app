@@ -3,6 +3,7 @@
 ECHO "execute this from the root directory of a freshly created Rails app"
 read -p "Press any key to continue or CTRL+C to abort"
 mkdir docs
+mkdir app/views/pages
 cp -p ../add_to_every_rails_app/docs/generic_class.txt docs
 cp -p ../add_to_every_rails_app/pages/* app/views/pages
 cp -p ../add_to_every_rails_app/controllers/pages_controller.rb app/views/controllers
