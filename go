@@ -6,7 +6,7 @@ mkdir docs
 mkdir app/views/pages
 cp -p ../add_to_every_rails_app/docs/generic_class.txt docs
 cp -p ../add_to_every_rails_app/pages/* app/views/pages
-cp -p ../add_to_every_rails_app/controllers/pages_controller.rb app/views/controllers
+cp -p ../add_to_every_rails_app/controllers/pages_controller.rb app/controllers
 cp -p ../add_to_every_rails_app/bin/ssh* bin
 cp -p ../add_to_every_rails_app/db/migrate/* db/migrate
 cp -p ../add_to_every_rails_app/pre-commit .git/hooks
@@ -17,6 +17,7 @@ bundle add time_common
 bundle add awesome_print
 bundle add factory_bot_rails --group test
 bundle add solargraph --group development
+bundle add redcarpet
 
 ECHO "ADD THIS TO ROUTES:"
 ECHO "========================================================================"
